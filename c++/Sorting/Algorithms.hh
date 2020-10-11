@@ -153,3 +153,46 @@ void printResult(int *B, int n){
 	}
 	cout << endl;
 }
+
+/*
+Radix Sorting
+https://brilliant.org/wiki/radix-sort/#:~:text=Radix%20sort%20is%20an%20integer,sort%20an%20array%20of%20numbers.
+Above site provides python code. Using it to write C++
+*/
+void counting_Sort (int *A, int digit, int radix){
+    const int max = 10;
+    int output[digit];
+    int count[max];
+
+    for (int i = 0; i < max; ++i){
+        count[i] = 0;
+    }
+    for (int i = 0; i < digit; i++){
+        count[(A[i] / radix) % 10]++;
+    }
+    for (int i = 1; i < max; i++){
+        count[i] += count[i - 1];
+    }
+
+     // Sorted order
+    for (int i = digit - 1; i >= 0; i--) {
+        output[count[(A[i]/radix) % 10] - 1] = A[i];
+        count[(A[i]/radix) % 10]--;
+    }
+
+    for (int i = 0; i < digit; i++){
+        A[i] = output[i];
+    }
+}
+
+void radix (int *A, int radix){
+    int max = A[0];
+    for (int i = 1; i < radix; i++){
+        if (A[i] > max){
+            max = A[i];
+        }
+    }
+    for (int loc = 1; max/loc > 0; loc *= 10){
+        counting_Sort(A, radix, loc);
+    }
+}

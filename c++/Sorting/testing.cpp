@@ -24,7 +24,7 @@ int main (){
     }
 
     while (cont == 'C' || cont == 'c'){
-        cout << "====Welcome to Sorting==== \nPress 1 for Quicksort \nPress 2 for Heapsort \nPress 3 for Mergesort \nPress 4 for Bubblesort \nAnything else to Quit." << endl;
+        cout << "====Welcome to Sorting==== \nPress 1 for Quicksort \nPress 2 for Heapsort \nPress 3 for Mergesort \nPress 4 for Bubblesort \nPress 5 for Radix Sorting \nAnything else to Quit." << endl;
         cin >> opt;
 
         switch(opt){
@@ -58,6 +58,14 @@ int main (){
                 printResult(randA, a);
                 cout<<"BubbleSort\n";
 		        bubblesort(c,a);	
+                printResult(c,a);	
+                cout<<endl;	
+                break;
+            case 5:
+                cout<<endl;	 
+                printResult(randA, a);
+                cout<<"RadixSort\n";
+		        radix(c,a);	
                 printResult(c,a);	
                 cout<<endl;	
                 break;
